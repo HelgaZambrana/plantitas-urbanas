@@ -1,20 +1,28 @@
+:root {
+  --hunter-green: #386641;
+  --asparagus: #6a994e;
+  --yellow-green: #a7c957;
+  --parchment: #f2e8cf;
+  --bittersweet-shimmer: #bc4749;
+}
+
 body {
   font-family: 'Quicksand', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fefefe;
-  color: #444;
+  background-color: var(--parchment);
+  color: var(--hunter-green);
 }
 
 header {
-  background-color: #d0f0c0;
+  background-color: var(--yellow-green);
   text-align: center;
   padding: 2rem;
-  color: #2e7d32;
+  color: var(--hunter-green);
 }
 
 nav {
-  background-color: #fce4ec;
+  background-color: var(--asparagus);
   padding: 1rem;
 }
 nav ul {
@@ -27,7 +35,7 @@ nav ul {
 }
 nav a {
   text-decoration: none;
-  color: #6a1b9a;
+  color: white;
   font-weight: bold;
 }
 
@@ -38,7 +46,7 @@ section {
 }
 
 #inicio {
-  background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+  background: linear-gradient(to right, var(--yellow-green), var(--parchment));
   text-align: center;
 }
 #inicio img {
@@ -57,8 +65,8 @@ section {
 }
 
 .card {
-  background-color: #fff0f5;
-  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
@@ -83,18 +91,19 @@ section {
 
 .card h3 {
   margin: 0.5rem 0 0.2rem;
-  color: #4e944f;
+  color: var(--hunter-green);
   font-size: 1.1rem;
 }
 
 .card p {
   margin: 0.3rem 0;
   font-size: 0.95rem;
+  color: var(--hunter-green);
 }
 
 .precio {
   font-weight: bold;
-  color: #c2185b;
+  color: var(--bittersweet-shimmer);
   font-size: 1rem;
 }
 
@@ -109,22 +118,25 @@ input, textarea {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: #fff;
+  font-family: 'Quicksand', sans-serif;
 }
 button {
-  background-color: #81c784;
+  background-color: var(--asparagus);
   color: white;
   padding: 0.8rem;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 1rem;
 }
 button:hover {
-  background-color: #66bb6a;
+  background-color: var(--hunter-green);
 }
 
 footer {
-  background-color: #c8e6c9;
-  color: #2e7d32;
+  background-color: var(--hunter-green);
+  color: white;
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
