@@ -2,12 +2,15 @@
 
 Este es un proyecto inicial de ecommerce de moda circular. La página incluye estructura HTML semántica, estilos CSS básicos, diseño responsive, contenido multimedia y un formulario de contacto funcional.
 
-## 🔧 Tecnologías utilizadas
+## 📌 Características
 
-- HTML5
-- CSS3 (Flexbox, Grid, Media Queries)
-- Google Fonts
-- Formspree para el formulario
+- HTML5 semántico 
+- Diseño responsive con Flexbox y Grid
+- Estilos CSS personalizados
+- Integración de fuentes de Google Fonts
+- Formulario funcional con Formspree
+- Contenido multimedia (imagen + video explicativo)
+- Navegación interna con anclas
 
 ## 📁 Estructura
 
@@ -16,21 +19,15 @@ Este es un proyecto inicial de ecommerce de moda circular. La página incluye es
 - `/img/`: Carpeta sugerida para imágenes.
 - `README.md`: Este archivo.
 
-## 📬 Contacto
-
-Formulario de contacto funcional a través de Formspree.
-
 ## 🌐 Visualización
 
 El sitio está desplegado en GitHub Pages.
 
 **URL del sitio:** [PENDIENTE](PENDIENTE)
 
-## 📌 Estado del Proyecto
+## 🔧 Tecnologías utilizadas
 
-✅ Estructura HTML  
-✅ Estilos CSS  
-✅ Responsive (Mobile Friendly)  
-✅ Multimedia  
-✅ Hosting online  
-✅ Formulario activo
+- HTML5
+- CSS3 (Flexbox, Grid, Media Queries)
+- Google Fonts
+- Formspree para el formulario
