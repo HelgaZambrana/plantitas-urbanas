@@ -56,7 +56,9 @@ section {
 }
 .card img {
   width: 100%;
+  max-width: 200px;
   height: auto;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 0.5rem;
 }
