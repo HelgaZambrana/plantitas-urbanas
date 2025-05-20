@@ -54,13 +54,14 @@ section {
   gap: 1rem;
   justify-content: center;
 }
-.card {
-  flex: 1 1 200px;
-  background-color: #fff0f5;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+.card p {
+  font-weight: bold;
 }
 
 form {
