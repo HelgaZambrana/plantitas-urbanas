@@ -1,22 +1,21 @@
-# Proyecto de Moda Circular
+# Plantitas Urbanas 🌿
 
-Este es un proyecto inicial de ecommerce de moda circular. La página incluye estructura HTML semántica, estilos CSS básicos, diseño responsive, contenido multimedia y un formulario de contacto funcional.
+Sitio web simple para un emprendimiento de venta de plantas de interior y suculentas.
 
 ## 📌 Características
 
-- HTML5 semántico 
-- Diseño responsive con Flexbox y Grid
-- Estilos CSS personalizados
+- HTML5 semánticos
+- CSS3
 - Integración de fuentes de Google Fonts
+- Diseño responsive con Flexbox
 - Formulario funcional con Formspree
 - Contenido multimedia (imagen + video explicativo)
-- Navegación interna con anclas
 
 ## 📁 Estructura
 
-- `index.html`: Página principal con navegación interna y secciones.
-- `styles.css`: Hoja de estilos externa.
-- `/img/`: Carpeta sugerida para imágenes.
+- `index.html`: Página principal.
+- `styles.css`: Estilos externos.
+- `/img/`: Carpeta para imágenes.
 - `README.md`: Este archivo.
 
 ## 🌐 Visualización
