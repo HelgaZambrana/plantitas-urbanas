@@ -1,9 +1,9 @@
 :root {
-  --hunter-green: #386641;
-  --asparagus: #6a994e;
-  --yellow-green: #a7c957;
-  --parchment: #f2e8cf;
-  --bittersweet-shimmer: #bc4749;
+  --parchment: #f0ead2;
+  --tea-green: #dde5b6;
+  --olivine: #adc178;
+  --chamoisee: #a98467;
+  --umber: #6c584c;
 }
 
 body {
@@ -11,18 +11,18 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--parchment);
-  color: var(--hunter-green);
+  color: var(--umber);
 }
 
 header {
-  background-color: var(--yellow-green);
+  background-color: var(--tea-green);
   text-align: center;
   padding: 2rem;
-  color: var(--hunter-green);
+  color: var(--umber);
 }
 
 nav {
-  background-color: var(--asparagus);
+  background-color: var(--olivine);
   padding: 1rem;
 }
 nav ul {
@@ -39,21 +39,24 @@ nav a {
   font-weight: bold;
 }
 
-section {
-  padding: 2rem;
-  max-width: 1000px;
-  margin: auto;
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
 }
 
 #inicio {
-  background: linear-gradient(to right, var(--yellow-green), var(--parchment));
+  background: url('img/banner-plantitas-urbanas.jpg') center/cover no-repeat;
   text-align: center;
+  color: white;
+  padding: 6rem 2rem;
 }
-#inicio img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 1rem;
-  border-radius: 12px;
+#inicio h2,
+#inicio p {
+  background-color: rgba(108, 88, 76, 0.6); /* var(--umber) con transparencia */
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
 }
 
 #productos {
@@ -61,11 +64,11 @@ section {
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 .card {
-  background-color: #ffffff;
+  background-color: white;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 1rem;
@@ -91,38 +94,45 @@ section {
 
 .card h3 {
   margin: 0.5rem 0 0.2rem;
-  color: var(--hunter-green);
+  color: var(--umber);
   font-size: 1.1rem;
 }
 
 .card p {
   margin: 0.3rem 0;
   font-size: 0.95rem;
-  color: var(--hunter-green);
+  color: var(--umber);
 }
 
 .precio {
   font-weight: bold;
-  color: var(--bittersweet-shimmer);
+  color: var(--chamoisee);
   font-size: 1rem;
 }
 
 form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-width: 500px;
   margin: auto;
 }
-input, textarea {
+
+input,
+textarea {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
   font-family: 'Quicksand', sans-serif;
 }
+
 button {
-  background-color: var(--asparagus);
+  background-color: var(--olivine);
   color: white;
   padding: 0.8rem;
   border: none;
@@ -131,11 +141,11 @@ button {
   font-size: 1rem;
 }
 button:hover {
-  background-color: var(--hunter-green);
+  background-color: var(--chamoisee);
 }
 
 footer {
-  background-color: var(--hunter-green);
+  background-color: var(--umber);
   color: white;
   text-align: center;
   padding: 1rem;
@@ -149,6 +159,10 @@ footer {
     align-items: center;
   }
 
+  .contenedor {
+    padding: 1rem;
+  }
+
   #productos {
     flex-direction: column;
     align-items: center;
@@ -156,5 +170,10 @@ footer {
 
   form {
     width: 90%;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
   }
 }
