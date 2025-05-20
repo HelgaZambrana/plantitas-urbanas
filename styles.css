@@ -53,7 +53,7 @@ nav a {
 }
 #inicio h2,
 #inicio p {
-  background-color: rgba(108, 88, 76, 0.6); /* var(--umber) con transparencia */
+  background-color: rgba(108, 88, 76, 0.6); /* con transparencia */
   display: inline-block;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -152,7 +152,34 @@ footer {
   margin-top: 2rem;
 }
 
-/* Responsive */
+#reseñas {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.grid-reseñas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.reseña {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-style: italic;
+}
+
+.reseña span {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--chamoisee);
+}
+
 @media (max-width: 600px) {
   nav ul {
     flex-direction: column;
