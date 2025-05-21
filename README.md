@@ -20,7 +20,7 @@ Sitio web simple para un emprendimiento de venta de plantas de interior y sucule
 
 ## 🌐 Visualización
 
-El sitio está desplegado en GitHub Pages.
+El deploy del sitio fue realizado en GitHub Pages.
 
 **URL del sitio:** [Plantitas Urbanas](https://helgazambrana.github.io/plantitas-urbanas/)
 
