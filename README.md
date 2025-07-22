@@ -7,7 +7,7 @@ Sitio web simple para un emprendimiento de venta de plantas de interior y sucule
 - HTML5 semántico
 - CSS3 con diseño responsive (Flexbox + Grid)
 - Fuentes personalizadas desde Google Fonts
-- Renderizado dinámico de productos desde API local (`plantas.json`)
+- Renderizado dinámico de productos desde API local (`plantas.json`) - NOTA: se utiliza momentáneamente dummyjson para corrección y test
 - Carrito de compras funcional con:
   - Agregar productos
   - Editar cantidad
@@ -46,7 +46,7 @@ El deploy del sitio fue realizado en GitHub Pages.
 
 ## 🛒 Funcionalidad del Carrito
 
-- Agrega productos dinámicamente desde `plantas.json`
+- Agrega productos dinámicamente desde `plantas.json` - NOTA: se utiliza momentáneamente dummyjson para corrección y test
 - Muestra tarjetas con título, imagen, precio
 - Botón “Agregar al carrito” para cada producto
 - Contador dinámico de productos en el carrito
