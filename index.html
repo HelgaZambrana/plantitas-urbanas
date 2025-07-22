@@ -26,16 +26,20 @@
     </ul>
   </nav>
 
-  <main class="contenedor">
-    <section id="carrito">
-      <h2>🛒 Tu Carrito</h2>
-      <div class="carrito-contenido">
-        <ul id="lista-carrito"></ul>
-        <p id="total-carrito">Total: $0</p>
-        <button id="vaciar-carrito">Vaciar Carrito</button>
-      </div>
-    </section>
+  <!-- Botón flotante para mostrar/ocultar carrito en mobile -->
+  <button id="toggle-carrito" title="Mostrar carrito">🛒</button>
 
+  <!-- Carrito lateral o fijo visible -->
+  <aside id="carrito">
+    <h2>🛒 Tu Carrito</h2>
+    <div class="carrito-contenedor">
+      <ul id="lista-carrito"></ul>
+      <p class="total">Total: $<span id="total-carrito">0</span></p>
+      <button id="vaciar-carrito">Vaciar Carrito</button>
+    </div>
+  </aside>
+
+  <main class="contenedor">
     <section id="inicio" aria-label="Banner principal">
     </section>
 
@@ -46,14 +50,6 @@
       </div>
     </section>
 
-    <section id="carrito">
-      <h2>Tu Carrito 🛒</h2>
-      <div class="carrito-contenedor">
-        <ul id="lista-carrito"></ul>
-        <p class="total">Total: $<span id="total-carrito">0</span></p>
-      </div>
-    </section>
-    
     <section id="reseñas">
       <h2>Qué dicen nuestros clientes 🌿</h2>
       <div class="grid-reseñas">
@@ -86,7 +82,6 @@
       <h2>Animate a compostar</h2>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/9GJHaAhjCsA?si=1sehMt-1sygb6ROs" frameborder="0" allowfullscreen title="Video sobre compostaje"></iframe>
     </section>
-
   </main>
 
   <footer>

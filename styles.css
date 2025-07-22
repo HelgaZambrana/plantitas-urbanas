@@ -25,6 +25,7 @@ nav {
   background-color: var(--olivine);
   padding: 1rem;
 }
+
 nav ul {
   list-style: none;
   display: flex;
@@ -33,6 +34,7 @@ nav ul {
   margin: 0;
   padding: 0;
 }
+
 nav a {
   text-decoration: none;
   color: white;
@@ -142,6 +144,7 @@ button {
   border-radius: 5px;
   font-size: 1rem;
 }
+
 button:hover {
   background-color: var(--chamoisee);
 }
@@ -181,25 +184,9 @@ footer {
   color: var(--chamoisee);
 }
 
-@media (max-width: 600px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contenedor {
-    padding: 1rem;
-  }
-
-  form {
-    width: 90%;
-  }
-
-  iframe {
-    width: 100%;
-    height: auto;
-  }
-}
+/* =====================
+   Carrito lateral fijo
+===================== */
 
 #carrito {
   position: fixed;
@@ -266,7 +253,6 @@ footer {
   font-size: 0.9rem;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 0.5rem;
   align-self: flex-end;
 }
 
@@ -274,7 +260,7 @@ footer {
   background-color: var(--umber);
 }
 
-/* Botón flotante para abrir/cerrar carrito */
+/* Botón flotante para abrir/cerrar carrito en mobile */
 #toggle-carrito {
   position: fixed;
   bottom: 20px;
@@ -287,20 +273,39 @@ footer {
   font-size: 1.2rem;
   cursor: pointer;
   z-index: 1000;
-  display: none; /* Oculto en desktop */
+  display: none;
 }
 
 #toggle-carrito:hover {
   background-color: var(--chamoisee);
 }
 
-/* Modo oculto del carrito */
 #carrito.oculto {
   transform: translateX(100%);
 }
 
-/* Responsive: móvil/tablet */
+/* =====================
+   Media Queries
+===================== */
 @media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contenedor {
+    padding: 1rem;
+  }
+
+  form {
+    width: 90%;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+  }
+
   #toggle-carrito {
     display: block;
   }
@@ -315,6 +320,5 @@ footer {
     border-radius: 0;
     box-shadow: none;
     padding: 2rem 1rem;
-    background-color: white;
   }
 }
