@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="e-commerce de plantas urbanas. Comprá suculentas, macetas y kits de jardinería." />
+  <meta name="keywords" content="plantas, suculentas, macetas, compost, jardín, tienda online" />
+  <meta name="author" content="Helga Zambrana" />
   <title>Plantitas Urbanas</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
@@ -17,7 +20,7 @@
   <nav>
     <ul>
       <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#productos">Productos</a></li>
+      <li><a href="#productos">Productos <span id="contador-carrito">0</span></a></li>
       <li><a href="#reseñas">Reseñas</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -30,28 +33,8 @@
 
     <section id="productos">
       <h2>Productos Destacados</h2>
-
       <div class="productos-grid">
-        <div class="card">
-          <img src="img/01-suculenta.jpg" alt="Suculenta mini" />
-          <h3>Suculenta Mini 🌱</h3>
-          <p>Ideal para escritorios o estanterías. Bajo mantenimiento.</p>
-          <p class="precio">$8.000</p>
-        </div>
-
-        <div class="card">
-          <img src="img/02-maceta.jpg" alt="Maceta artesanal" />
-          <h3>Maceta Artesanal 🎍</h3>
-          <p>Hecha a mano con arcilla ecológica.</p>
-          <p class="precio">$15.000</p>
-        </div>
-
-        <div class="card">
-          <img src="img/03-herramientas.jpg" alt="Kit de herramientas" />
-          <h3>Kit de Inicio 🌼</h3>
-          <p>Las herramientas básicas para todo jardinero iniciante.</p>
-          <p class="precio">$20.000</p>
-        </div>
+        <!-- Productos generados dinámicamente por script.js -->
       </div>
     </section>
 
@@ -85,7 +68,7 @@
 
     <section id="video">
       <h2>Animate a compostar</h2>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/9GJHaAhjCsA?si=1sehMt-1sygb6ROs" frameborder="0" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/9GJHaAhjCsA?si=1sehMt-1sygb6ROs" frameborder="0" allowfullscreen title="Video sobre compostaje"></iframe>
     </section>
 
   </main>
@@ -94,5 +77,6 @@
     <p>&copy; 2025 Plantitas Urbanas. Todos los derechos reservados.</p>
   </footer>
 
+  <script src="script.js" defer></script>
 </body>
 </html>
