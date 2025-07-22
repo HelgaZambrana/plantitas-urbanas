@@ -1,23 +1,44 @@
 [
   {
-    "id": "p1",
+    "id": "1",
     "title": "Cactus mini 🌵",
     "description": "Cactus decorativo ideal para escritorios.",
     "price": 7500,
-    "image": "img/01-suculenta.jpg"
+    "image": "img/suculenta.jpg"
   },
   {
-    "id": "p2",
+    "id": "2",
     "title": "Maceta rústica 🪴",
     "description": "Maceta artesanal de barro cocido.",
     "price": 11000,
-    "image": "img/02-maceta.jpg"
+    "image": "img/maceta.jpg"
   },
   {
-    "id": "p3",
+    "id": "3",
     "title": "Kit jardín 🌼",
     "description": "Incluye pala, rastrillo y guantes.",
     "price": 18500,
-    "image": "img/03-herramientas.jpg"
+    "image": "img/herramientas.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Aloe Vera",
+    "description": "Planta medicinal fácil de cuidar. Ideal para interiores con luz.",
+    "price": 18000,
+    "image": "img/aloe-vera.jpg"
+  },
+  {
+    "id": "5",
+    "title": "Terrario de Vidrio",
+    "description": "Terrario cerrado con suculentas, musgo y piedras decorativas.",
+    "price": 32000,
+    "image": "img/terrario.jpg"
+  },
+  {
+    "id": "6",
+    "title": "Cactus Decorativo",
+    "description": "Cactus pequeño con maceta de cemento geométrica.",
+    "price": 11000,
+    "image": "img/cactus.jpg"
   }
 ]

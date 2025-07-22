@@ -4,28 +4,27 @@
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 // ==============================
-// Esperar que el DOM cargue
+// DOM listo
 // ==============================
 document.addEventListener('DOMContentLoaded', () => {
   fetchProductos();
+  renderizarCarrito();
   actualizarContador();
   validarFormulario();
-  renderizarCarrito();
-  configurarToggleCarrito();
 });
 
 // ==============================
-// Fetch API: obtener productos desde archivo local
+// Fetch API desde dummyjson
 // ==============================
 function fetchProductos() {
-  fetch('plantas.json')
+  fetch('https://dummyjson.com/products?limit=6')
     .then(res => res.json())
-    .then(data => mostrarProductos(data))
+    .then(data => mostrarProductos(data.products))
     .catch(err => console.error('Error al cargar productos:', err));
 }
 
 // ==============================
-// Mostrar productos en el DOM
+// Mostrar productos
 // ==============================
 function mostrarProductos(productos) {
   const contenedor = document.querySelector('.productos-grid');
@@ -35,11 +34,11 @@ function mostrarProductos(productos) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = `
-      <img src="${prod.image}" alt="${prod.title}" />
+      <img src="${prod.thumbnail}" alt="${prod.title}" />
       <h3>${prod.title}</h3>
       <p>${prod.description.substring(0, 80)}...</p>
       <p class="precio">$${prod.price.toFixed(2)}</p>
-      <button class="agregar-carrito" data-id="${prod.id}" data-title="${prod.title}" data-price="${prod.price}" data-img="${prod.image}">
+      <button class="agregar-carrito" data-id="${prod.id}" data-title="${prod.title}" data-price="${prod.price}" data-img="${prod.thumbnail}">
         Agregar al carrito
       </button>
     `;
@@ -68,6 +67,20 @@ document.addEventListener('click', e => {
     guardarYActualizar();
   }
 
+  if (e.target.id === 'vaciar-carrito') {
+    localStorage.removeItem('carrito');
+    carrito = [];
+    guardarYActualizar();
+  }
+
+  if (e.target.id === 'finalizar-compra') {
+    localStorage.removeItem('carrito');
+    carrito = [];
+    guardarYActualizar();
+    alert('¡Gracias por tu compra!');
+    window.location.href = '#inicio';
+  }
+
   if (e.target.classList.contains('eliminar-item')) {
     const index = e.target.dataset.index;
     carrito.splice(index, 1);
@@ -76,7 +89,48 @@ document.addEventListener('click', e => {
 });
 
 // ==============================
-// Editar cantidad en carrito
+// Actualizar contador
+// ==============================
+function actualizarContador() {
+  const contador = document.getElementById('contador-carrito');
+  if (contador) {
+    const total = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    contador.textContent = total;
+  }
+}
+
+// ==============================
+// Renderizar carrito
+// ==============================
+function renderizarCarrito() {
+  const lista = document.getElementById('lista-carrito');
+  const total = document.getElementById('total-carrito');
+  lista.innerHTML = '';
+
+  let totalCompra = 0;
+
+  carrito.forEach((item, index) => {
+    totalCompra += item.precio * item.cantidad;
+
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div style="display:flex; align-items:center;">
+        <img src="${item.img}" alt="${item.titulo}">
+        <span>${item.titulo} - $${item.precio.toFixed(2)}</span>
+      </div>
+      <div>
+        <input type="number" min="1" value="${item.cantidad}" data-index="${index}" class="editar-cantidad">
+        <button class="eliminar-item" data-index="${index}">🗑️</button>
+      </div>
+    `;
+    lista.appendChild(li);
+  });
+
+  total.textContent = totalCompra.toFixed(2);
+}
+
+// ==============================
+// Editar cantidad
 // ==============================
 document.addEventListener('input', e => {
   if (e.target.classList.contains('editar-cantidad')) {
@@ -88,7 +142,7 @@ document.addEventListener('input', e => {
 });
 
 // ==============================
-// Guardar en localStorage y actualizar UI
+// Guardar y actualizar
 // ==============================
 function guardarYActualizar() {
   localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -97,50 +151,7 @@ function guardarYActualizar() {
 }
 
 // ==============================
-// Renderizar Carrito en el DOM
-// ==============================
-function renderizarCarrito() {
-  const lista = document.getElementById('lista-carrito');
-  const total = document.getElementById('total-carrito');
-  if (!lista || !total) return;
-
-  lista.innerHTML = '';
-  let totalCompra = 0;
-
-  carrito.forEach((item, index) => {
-    const li = document.createElement('li');
-    totalCompra += item.precio * item.cantidad;
-
-    li.innerHTML = `
-      <div style="display:flex; align-items:center;">
-        <img src="${item.img}" alt="${item.titulo}">
-        <span>${item.titulo} - $${item.precio.toFixed(2)}</span>
-      </div>
-      <div>
-        <input type="number" min="1" value="${item.cantidad}" data-index="${index}" class="editar-cantidad">
-        <button class="eliminar-item" data-index="${index}">🗑️</button>
-      </div>
-    `;
-
-    lista.appendChild(li);
-  });
-
-  total.textContent = totalCompra.toFixed(2);
-}
-
-// ==============================
-// Actualizar contador del carrito
-// ==============================
-function actualizarContador() {
-  const contador = document.getElementById('contador-carrito');
-  if (contador) {
-    const total = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-    contador.textContent = total;
-  }
-}
-
-// ==============================
-// Validar formulario de contacto
+// Validar formulario
 // ==============================
 function validarFormulario() {
   const form = document.querySelector('form');
@@ -155,23 +166,5 @@ function validarFormulario() {
       e.preventDefault();
       alert('Por favor completá correctamente todos los campos.');
     }
-  });
-}
-
-// ==============================
-// Mostrar/ocultar carrito (para móviles)
-// ==============================
-function configurarToggleCarrito() {
-  const carritoEl = document.getElementById('carrito');
-  const toggleBtn = document.getElementById('toggle-carrito');
-
-  if (!carritoEl || !toggleBtn) return;
-
-  if (window.innerWidth <= 768) {
-    carritoEl.classList.add('oculto');
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    carritoEl.classList.toggle('oculto');
   });
 }
