@@ -1,0 +1,23 @@
+[
+  {
+    "id": "p1",
+    "title": "Cactus mini 🌵",
+    "description": "Cactus decorativo ideal para escritorios.",
+    "price": 7500,
+    "image": "img/01-suculenta.jpg"
+  },
+  {
+    "id": "p2",
+    "title": "Maceta rústica 🪴",
+    "description": "Maceta artesanal de barro cocido.",
+    "price": 11000,
+    "image": "img/02-maceta.jpg"
+  },
+  {
+    "id": "p3",
+    "title": "Kit jardín 🌼",
+    "description": "Incluye pala, rastrillo y guantes.",
+    "price": 18500,
+    "image": "img/03-herramientas.jpg"
+  }
+]

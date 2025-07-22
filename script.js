@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==============================
-// Fetch API: obtener productos
+// Fetch API: obtener productos desde archivo local
 // ==============================
 function fetchProductos() {
-  fetch('https://fakestoreapi.com/products?limit=6')
+  fetch('plantas.json')
     .then(res => res.json())
     .then(data => mostrarProductos(data))
     .catch(err => console.error('Error al cargar productos:', err));
@@ -97,3 +97,66 @@ function validarFormulario() {
     }
   });
 }
+
+// ==============================
+// Mostrar carrito en el DOM
+// ==============================
+function renderizarCarrito() {
+  const lista = document.getElementById('lista-carrito');
+  const total = document.getElementById('total-carrito');
+  lista.innerHTML = '';
+
+  let totalCompra = 0;
+
+  carrito.forEach((item, index) => {
+    const li = document.createElement('li');
+    totalCompra += item.precio * item.cantidad;
+
+    li.innerHTML = `
+      <div style="display:flex; align-items:center;">
+        <img src="${item.img}" alt="${item.titulo}">
+        <span>${item.titulo} - $${item.precio.toFixed(2)}</span>
+      </div>
+      <div>
+        <input type="number" min="1" value="${item.cantidad}" data-index="${index}" class="editar-cantidad">
+        <button class="eliminar-item" data-index="${index}">🗑️</button>
+      </div>
+    `;
+
+    lista.appendChild(li);
+  });
+
+  total.textContent = totalCompra.toFixed(2);
+}
+
+// ==============================
+// Cambiar cantidad o eliminar
+// ==============================
+document.addEventListener('input', e => {
+  if (e.target.classList.contains('editar-cantidad')) {
+    const index = e.target.dataset.index;
+    const nuevaCantidad = parseInt(e.target.value);
+    carrito[index].cantidad = nuevaCantidad > 0 ? nuevaCantidad : 1;
+    guardarYActualizar();
+  }
+});
+
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('eliminar-item')) {
+    const index = e.target.dataset.index;
+    carrito.splice(index, 1);
+    guardarYActualizar();
+  }
+});
+
+// ==============================
+// Guardar en localStorage y actualizar UI
+// ==============================
+function guardarYActualizar() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  renderizarCarrito();
+  actualizarContador();
+}
+
+// Llamar al render al cargar la página
+document.addEventListener('DOMContentLoaded', renderizarCarrito);
