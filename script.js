@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchProductos();
   actualizarContador();
   validarFormulario();
+  renderizarCarrito();
+  configurarToggleCarrito();
 });
 
 // ==============================
@@ -63,13 +65,71 @@ document.addEventListener('click', e => {
       carrito.push({ id, titulo, precio, img, cantidad: 1 });
     }
 
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    actualizarContador();
+    guardarYActualizar();
+  }
+
+  if (e.target.classList.contains('eliminar-item')) {
+    const index = e.target.dataset.index;
+    carrito.splice(index, 1);
+    guardarYActualizar();
   }
 });
 
 // ==============================
-// Actualizar contador
+// Editar cantidad en carrito
+// ==============================
+document.addEventListener('input', e => {
+  if (e.target.classList.contains('editar-cantidad')) {
+    const index = e.target.dataset.index;
+    const nuevaCantidad = parseInt(e.target.value);
+    carrito[index].cantidad = nuevaCantidad > 0 ? nuevaCantidad : 1;
+    guardarYActualizar();
+  }
+});
+
+// ==============================
+// Guardar en localStorage y actualizar UI
+// ==============================
+function guardarYActualizar() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  renderizarCarrito();
+  actualizarContador();
+}
+
+// ==============================
+// Renderizar Carrito en el DOM
+// ==============================
+function renderizarCarrito() {
+  const lista = document.getElementById('lista-carrito');
+  const total = document.getElementById('total-carrito');
+  if (!lista || !total) return;
+
+  lista.innerHTML = '';
+  let totalCompra = 0;
+
+  carrito.forEach((item, index) => {
+    const li = document.createElement('li');
+    totalCompra += item.precio * item.cantidad;
+
+    li.innerHTML = `
+      <div style="display:flex; align-items:center;">
+        <img src="${item.img}" alt="${item.titulo}">
+        <span>${item.titulo} - $${item.precio.toFixed(2)}</span>
+      </div>
+      <div>
+        <input type="number" min="1" value="${item.cantidad}" data-index="${index}" class="editar-cantidad">
+        <button class="eliminar-item" data-index="${index}">🗑️</button>
+      </div>
+    `;
+
+    lista.appendChild(li);
+  });
+
+  total.textContent = totalCompra.toFixed(2);
+}
+
+// ==============================
+// Actualizar contador del carrito
 // ==============================
 function actualizarContador() {
   const contador = document.getElementById('contador-carrito');
@@ -99,64 +159,19 @@ function validarFormulario() {
 }
 
 // ==============================
-// Mostrar carrito en el DOM
+// Mostrar/ocultar carrito (para móviles)
 // ==============================
-function renderizarCarrito() {
-  const lista = document.getElementById('lista-carrito');
-  const total = document.getElementById('total-carrito');
-  lista.innerHTML = '';
+function configurarToggleCarrito() {
+  const carritoEl = document.getElementById('carrito');
+  const toggleBtn = document.getElementById('toggle-carrito');
 
-  let totalCompra = 0;
+  if (!carritoEl || !toggleBtn) return;
 
-  carrito.forEach((item, index) => {
-    const li = document.createElement('li');
-    totalCompra += item.precio * item.cantidad;
+  if (window.innerWidth <= 768) {
+    carritoEl.classList.add('oculto');
+  }
 
-    li.innerHTML = `
-      <div style="display:flex; align-items:center;">
-        <img src="${item.img}" alt="${item.titulo}">
-        <span>${item.titulo} - $${item.precio.toFixed(2)}</span>
-      </div>
-      <div>
-        <input type="number" min="1" value="${item.cantidad}" data-index="${index}" class="editar-cantidad">
-        <button class="eliminar-item" data-index="${index}">🗑️</button>
-      </div>
-    `;
-
-    lista.appendChild(li);
+  toggleBtn.addEventListener('click', () => {
+    carritoEl.classList.toggle('oculto');
   });
-
-  total.textContent = totalCompra.toFixed(2);
 }
-
-// ==============================
-// Cambiar cantidad o eliminar
-// ==============================
-document.addEventListener('input', e => {
-  if (e.target.classList.contains('editar-cantidad')) {
-    const index = e.target.dataset.index;
-    const nuevaCantidad = parseInt(e.target.value);
-    carrito[index].cantidad = nuevaCantidad > 0 ? nuevaCantidad : 1;
-    guardarYActualizar();
-  }
-});
-
-document.addEventListener('click', e => {
-  if (e.target.classList.contains('eliminar-item')) {
-    const index = e.target.dataset.index;
-    carrito.splice(index, 1);
-    guardarYActualizar();
-  }
-});
-
-// ==============================
-// Guardar en localStorage y actualizar UI
-// ==============================
-function guardarYActualizar() {
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  renderizarCarrito();
-  actualizarContador();
-}
-
-// Llamar al render al cargar la página
-document.addEventListener('DOMContentLoaded', renderizarCarrito);

@@ -202,43 +202,119 @@ footer {
 }
 
 #carrito {
-  margin-top: 3rem;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: white;
+  border-left: 2px solid var(--olivine);
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  z-index: 999;
+  border-radius: 10px 0 0 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#carrito h2 {
+  font-size: 1.2rem;
+  margin-top: 0;
 }
 
 .carrito-contenedor {
-  max-width: 600px;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 #lista-carrito {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 #lista-carrito li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #eee;
   padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 #lista-carrito img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
-  border-radius: 5px;
-  margin-right: 1rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
 }
 
-.total {
+#total-carrito {
   font-weight: bold;
-  font-size: 1.2rem;
   text-align: right;
   margin-top: 1rem;
+}
+
+#vaciar-carrito {
+  background-color: var(--chamoisee);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  align-self: flex-end;
+}
+
+#vaciar-carrito:hover {
+  background-color: var(--umber);
+}
+
+/* Botón flotante para abrir/cerrar carrito */
+#toggle-carrito {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--olivine);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1000;
+  display: none; /* Oculto en desktop */
+}
+
+#toggle-carrito:hover {
+  background-color: var(--chamoisee);
+}
+
+/* Modo oculto del carrito */
+#carrito.oculto {
+  transform: translateX(100%);
+}
+
+/* Responsive: móvil/tablet */
+@media (max-width: 768px) {
+  #toggle-carrito {
+    display: block;
+  }
+
+  #carrito {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    max-height: none;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 2rem 1rem;
+    background-color: white;
+  }
 }
