@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // Fetch API desde dummyjson
 // ==============================
 function fetchProductos() {
-  fetch('https://dummyjson.com/products?limit=6')
+  fetch('plantas.json')
     .then(res => res.json())
-    .then(data => mostrarProductos(data.products))
+    .then(data => mostrarProductos(data))
     .catch(err => console.error('Error al cargar productos:', err));
 }
 
